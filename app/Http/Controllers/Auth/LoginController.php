@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+
+
 
 class LoginController extends Controller
 {
@@ -31,14 +33,15 @@ class LoginController extends Controller
     //protected $redirectTo = RouteServiceProvider::HOME;
     protected function authenticated()
     {
-        if (Auth::user()->role==1) {
-            return redirect('dashboard')->with('status','hey Auth::user()->name welcome to your dashboard');
-        } else {
-            return redirect('/')->with('status','hey Auth::user()->name welcome to our ecommerce site');
+        if(Auth::user()->role_as == '1') //1 = Admin Login
+        {
+            return redirect('dashboard')->with('status','Auth::user()->name,Welcome to your dashboard');
         }
-        
+        elseif(Auth::user()->role_as == '0') // Normal or Default User Login
+        {
+            return redirect('/')->with('status','Logged in successfully');
+        }
     }
-
     /**
      * Create a new controller instance.
      *

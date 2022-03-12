@@ -10,16 +10,15 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('maincss/boot5.css') }}" rel="stylesheet">
-    <link href="{{ asset('maincss/custom.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('front/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('front/custom.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -59,7 +58,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -81,6 +80,6 @@
             @yield('content')
         </main>
     </div>
-<script src="{{ asset('js/boot.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 </body>
 </html>
