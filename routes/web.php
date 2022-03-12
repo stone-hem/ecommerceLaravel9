@@ -86,8 +86,12 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     
     //subcategories routes
 
-    Route::get('subcategories', [SubcategoryController::class,'add']);
-    Route::post('add-subcategory',[SubcategoryController::class,'insert']);
-    Route::get('sub',[SubcategoryController::class,'index']);
+    // Route::get('subcategories', [SubcategoryController::class,'add']);
+    // Route::post('add-subcategory',[SubcategoryController::class,'insert']);
+    // Route::get('sub/{id}',[SubcategoryController::class,'index']);
+
+    Route::get('subcategories', [SubcategoryController::class,'create']);
+    Route::post('add-subcategory',[SubcategoryController::class,'store']);
+    Route::get('sub/{id}',[SubcategoryController::class,'showsub']);
 
 });

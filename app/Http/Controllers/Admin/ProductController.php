@@ -7,13 +7,21 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products=Product::all();//calling the products model
-        return view('admin.product.index',compact('products'));
+        // $products=Product::join('categories','categories.id','=','products.cate_id')->get();
+        try {
+            $products=Product::all();//calling the products model
+            // return Response::json($products);
+            return view('admin.product.index',compact('products'));
+        } catch (\Throwable $th) {
+            return Response::json($th);
+        }
+       
     }
     public function add()
     {
@@ -34,16 +42,12 @@ class ProductController extends Controller
         $products->name=$request->input('name'); 
         $products->slug=$request->input('slug'); 
         $products->small_description=$request->input('small_description'); 
-        $products->description=$request->input('description'); 
         $products->orignal_price=$request->input('orignal_price'); 
         $products->selling_price=$request->input('selling_price'); 
         $products->quantity=$request->input('quantity'); 
         $products->tax=$request->input('tax'); 
         $products->status=$request->input('status')==TRUE?'1':'0';//using ternary operator
         $products->trending=$request->input('trending')==TRUE?'1':'0';
-        $products->meta_title=$request->input('meta_title'); 
-        $products->meta_description=$request->input('meta_description'); 
-        $products->meta_keywords=$request->input('meta_keywords'); 
         $products->save();//save the data
         return redirect('products')->with('status','product added successfull');//redirect to dashboard with some message
     }
@@ -70,16 +74,12 @@ class ProductController extends Controller
         $products->name=$request->input('name'); 
         $products->slug=$request->input('slug'); 
         $products->small_description=$request->input('small_description'); 
-        $products->description=$request->input('description'); 
         $products->orignal_price=$request->input('orignal_price'); 
         $products->selling_price=$request->input('selling_price'); 
         $products->quantity=$request->input('quantity'); 
         $products->tax=$request->input('tax'); 
         $products->status=$request->input('status')==TRUE?'1':'0';//using ternary operator
         $products->trending=$request->input('trending')==TRUE?'1':'0';
-        $products->meta_title=$request->input('meta_title'); 
-        $products->meta_description=$request->input('meta_description'); 
-        $products->meta_keywords=$request->input('meta_keywords'); 
         $products->update();//update the data using update function
         return redirect('products')->with('status','product updated successfull');//redirect to  with some message
     }

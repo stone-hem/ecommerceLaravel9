@@ -8,6 +8,7 @@ use App\Models\Category; //the model in use must be imported
 
 class SubcategoryController extends Controller
 {
+
     public function add()//this function redirects us to the adding page
     {
         $subcategory=Category::all();
@@ -20,9 +21,6 @@ class SubcategoryController extends Controller
             'name' => 'required',
             'slug'=>'required',
             'description' => 'required',
-            'meta_title' => 'required',
-            'meta_keywords'=>'required',
-            'meta_description'=>'required',
             'image' => 'required',
         ]);
 
@@ -42,15 +40,17 @@ class SubcategoryController extends Controller
         $subcategory->description=$request->input('description');
         $subcategory->status=$request->input('status')==TRUE?'1':'0';//using ternary operator
         $subcategory->popular=$request->input('popular')==TRUE?'1':'0';
-        $subcategory->meta_title=$request->input('meta_title');
-        $subcategory->meta_keywords=$request->input('meta_keywords');
-        $subcategory->meta_description=$request->input('meta_description');
         $subcategory->save();//save the data
         return redirect('/dashboard')->with('status','category added successfull');//redirect to dashboard with some message
     }
-    public function index(){
-        $category=Category::whereColumn('Parent_id','!=','id')->get();
-        return view('admin.sub.index',compact('category'));
+    public function showsub($id){
+        $subcategory = Category::findOrFail($id);
+        $id=$subcategory->id;
+        
+        // dd($subcategory);
+
+        // return response()->json($category->id);
+        return view('admin.sub.index',compact('subcategory'));
         
     }
 }

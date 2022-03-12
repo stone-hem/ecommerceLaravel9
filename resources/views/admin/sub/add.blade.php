@@ -45,7 +45,7 @@ color: black !important;
                     <label for="">slug</label>
                     <input type="text" class="form-control" name="slug" required>
                     <label for="">description</label>
-                    <textarea name="description" rows="4" class="form-control">put your description here</textarea>
+                    <textarea name="description" rows="4" class="form-control"></textarea>
  
                     <label for="">status</label>
                     <input type="checkbox"  name="status">
@@ -53,12 +53,6 @@ color: black !important;
                     <label for="">popular</label>
                     <input type="checkbox"  name="popular">
                     <br>
-                    <label for="">meta title</label>
-                    <input type="text" class="form-control" name="meta_title" required>
-                    <label for="">meta keywords</label>
-                    <textarea name="meta_keywords" rows="4" class="form-control"> put your meta keywords here</textarea>
-                    <label for="">meta description</label>
-                    <textarea name="meta_description" rows="4" class="form-control"> put your meta description here</textarea>
 
                     <input type="file" class="form-control" name="image" required>
 

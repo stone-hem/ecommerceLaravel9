@@ -31,10 +31,7 @@ color: black !important;
                     <input type="text" style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);"  class="form-control" name="slug" required>
 
                     <label for="">small_description</label>
-                    <textarea name="small_description"  style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);" rows="2" class="form-control">put your description here</textarea>
-
-                    <label for="">description</label>
-                    <textarea name="description"   style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);" rows="4" class="form-control">put your description here</textarea>
+                    <textarea name="small_description"  style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);" rows="2" class="form-control"></textarea>
 
                     <label for=""><b>orignal price</b></label>
                     <input style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);" type="number" class="form-control" name="orignal_price" required>
@@ -54,12 +51,6 @@ color: black !important;
                     <label for="">trending</label>
                     <input type="checkbox"  name="trending">
                     <br>
-                    <label for="">meta title</label>
-                    <input type="text" style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);"  class="form-control" name="meta_title" required>
-                    <label for="">meta keywords</label>
-                    <textarea name="meta_keywords"  style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);" rows="4" class="form-control"> put yourmeta keywords here</textarea>
-                    <label for="">meta description</label>
-                    <textarea name="meta_description"  style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);" rows="4" class="form-control"> put your meta description here</textarea>
 
                     <input type="file" class="form-control" name="image" required>
 

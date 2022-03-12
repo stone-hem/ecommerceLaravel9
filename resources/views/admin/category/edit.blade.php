@@ -29,12 +29,6 @@ color: black !important;
                     <label for="">popular</label>
                     <input type="checkbox" {{$category->popular=="1"? 'checked':''}} name="popular">
                     <br>
-                    <label for="">meta title</label>
-                    <input type="text" style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);"  value={{$category->meta_title}} class="form-control" name="meta_title">
-                    <label for="">meta keywords</label>
-                    <textarea name="meta_keywords"   style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);" rows="4" class="form-control">{{$category->meta_keywords}}</textarea>
-                    <label for="">meta description</label>
-                    <textarea name="meta_description"   style="margin: .4rem 0; border: 2px solid rgb(57, 163, 202);" rows="4" class="form-control">{{$category->meta_description}}</textarea>
 
                     @if ($category->image)
                         <img src="{{asset('assets/uploads/category/'.$category->image)}}" alt="image required">

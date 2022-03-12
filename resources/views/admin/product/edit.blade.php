@@ -32,11 +32,8 @@ color: black !important;
                     <label for="">slug</label>
                     <input type="text" value="{{ $products->slug }}" class="form-control" name="slug">
 
-                    <label for="">small_description</label>
+                    <label for="">small description</label>
                     <textarea name="small_description" rows="2" class="form-control">{{ $products->small_description }}</textarea>
-
-                    <label for="">description</label>
-                    <textarea name="description" rows="4" class="form-control">value="{{ $products->description }}</textarea>
 
                     <label for=""><b>orignal price</b></label>
                     <input style="display: block;" value="{{ $products->orignal_price }}" type="number" class="form-control" name="orignal_price">
@@ -56,12 +53,6 @@ color: black !important;
                     <label for="">trending</label>
                     <input type="checkbox" {{$products->trending=="1"? 'checked':''}} name="trending">
                     <br>
-                    <label for="">meta title</label>
-                    <input type="text" value="{{ $products->meta_title }}" class="form-control" name="meta_title">
-                    <label for="">meta keywords</label>
-                    <textarea name="meta_keywords" rows="4" class="form-control"> {{ $products->meta_keywords }}</textarea>
-                    <label for="">meta description</label>
-                    <textarea name="meta_description" rows="4" class="form-control"> {{ $products->meta_description }}</textarea>
 
                     @if ($products->image)
                         <img src="{{asset('assets/uploads/products/'.$products->image)}}" alt="image required">

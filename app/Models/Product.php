@@ -14,7 +14,6 @@ class Product extends Model
         'name',
         'slug',
         'small_description',
-        'description',
         'orignal_price',
         'selling_price',
         'image',
@@ -22,9 +21,6 @@ class Product extends Model
         'tax',
         'status',
         'trending',
-        'meta_title',
-        'meta_keywords',
-        'meta_description',
     ];
     //creating a has many relationship
     public function category()

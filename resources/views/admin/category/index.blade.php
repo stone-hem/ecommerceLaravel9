@@ -31,7 +31,7 @@
                     <button class="btn btn-danger"> <a href="{{url('delete-category/'.$item->id)}}">Delete</a></button>
                  </td>
                  <td>
-                    <button class="btn btn-light"> <a href="{{url('sub')}}">view sub-categories</a></button>
+                    <button class="btn btn-light"> <a href="{{url('sub/'.$item->id)}}">view sub-categories</a></button>
                   </td>
                  </tr>
              

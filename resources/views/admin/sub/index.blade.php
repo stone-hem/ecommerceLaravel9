@@ -19,22 +19,22 @@
         </thead>
             <tbody>
                 
-                @foreach($category as $item)
+                {{-- @foreach($subcategory as $item) --}}
                 {{-- @if($category->Parent_id == $category->id) --}}
                 <tr>
-                 <td>{{$item->id}}</td>
-                 <td>{{$item->name}}</td>
-                 <td>{{$item->description}}</td>
+                 <td>{{$subcategory->id}}</td>
+                 <td>{{$subcategory->name}}</td>
+                 <td>{{$subcategory->description}}</td>
                  <td>
-                 <img src="{{asset('assets/uploads/category/'.$item->image)}}" class="w-25" alt="image to be uploaded">
+                 <img src="{{asset('assets/uploads/category/'.$subcategory->image)}}" class="w-25" alt="image to be uploaded">
                  </td>
                  <td>
-                   <button class="btn btn-primary"> <a href="{{url('edit-category/'.$item->id)}}">edit</a></button>
-                    <button class="btn btn-danger"> <a href="{{url('delete-category/'.$item->id)}}">Delete</a></button>
+                   <button class="btn btn-primary"> <a href="{{url('edit-category/'.$subcategory->id)}}">edit</a></button>
+                    <button class="btn btn-danger"> <a href="{{url('delete-category/'.$subcategory->id)}}">Delete</a></button>
                  </td>
                  </tr>
                  {{-- @endif --}}
-                 @endforeach
+                 {{-- @endforeach --}}
         
             </tbody>
         </table>

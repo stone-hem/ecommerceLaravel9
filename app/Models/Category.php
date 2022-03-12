@@ -18,9 +18,6 @@ class Category extends Model
         'status',
         'popular',
         'image',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
     ];
     public function subcategory()
     {

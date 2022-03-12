@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -22,12 +23,9 @@ class CategoryController extends Controller
     public function insert (Request $request)
     {
         $this->validate(request(), [
-            'name' => 'required|min:10',
+            'name' => 'bail|alpha|required|min:5',
             'slug'=>'required',
             'description' => 'required',
-            'meta_title' => 'required',
-            'meta_keywords'=>'required',
-            'meta_description'=>'required',
             'image' => 'required',
         ]);
 
@@ -50,9 +48,6 @@ class CategoryController extends Controller
         $category->description=$request->input('description');
         $category->status=$request->input('status')==TRUE?'1':'0';//using ternary operator
         $category->popular=$request->input('popular')==TRUE?'1':'0';
-        $category->meta_title=$request->input('meta_title');
-        $category->meta_keywords=$request->input('meta_keywords');
-        $category->meta_description=$request->input('meta_description');
         $category->save();//save the data
         return redirect('/dashboard')->with('status','category added successfull');//redirect to dashboard with some message
     }
@@ -66,9 +61,6 @@ class CategoryController extends Controller
             'name' => 'required',
             'slug'=>'required',
             'description' => 'required',
-            'meta_title' => 'required',
-            'meta_keywords'=>'required',
-            'meta_description'=>'required',
             'image' => 'required',
         ]);
 
@@ -90,9 +82,6 @@ class CategoryController extends Controller
         $category->description=$request->input('description');
         $category->status=$request->input('status')==TRUE?'1':'0';//using ternary operator
         $category->popular=$request->input('popular')==TRUE?'1':'0';
-        $category->meta_title=$request->input('meta_title');
-        $category->meta_keywords=$request->input('meta_keywords');
-        $category->meta_description=$request->input('meta_description');
         $category->update();
         return redirect('/dashboard')->with('status','updated successfully');
 
@@ -106,7 +95,12 @@ class CategoryController extends Controller
                 File::delete($path);
             }
         }
-        $category->delete();
-        return redirect('categories')->with('status','deleted successfully');
+        $result=$category->delete();
+        if ($result) {
+            $product=Product::where('cate_id',$id);
+            $product->delete();
+        }
+        return redirect('categories')->with('status','category deleted successfully plus all of it products');
     }
+    
 }
